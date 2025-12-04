@@ -1,0 +1,86 @@
+.focus-timer-container {
+    padding: 50px;
+    text-align: center;
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.timer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.mode-switcher {
+    display: flex;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 6px;
+    border-radius: 20px;
+    gap: 4px;
+}
+
+.mode-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 16px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mode-btn:hover {
+    color: white;
+}
+
+.mode-btn.active {
+    background: rgba(167, 139, 250, 0.2);
+    color: white;
+}
+
+.timer-display {
+    font-size: 7rem;
+    font-weight: 800;
+    color: white;
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 0 40px rgba(167, 139, 250, 0.5);
+}
+
+.timer-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.main-action-btn {
+    padding: 18px 44px;
+    font-size: 1.25rem;
+}
+
+.reset-btn {
+    padding: 18px;
+}
+
+.reset-btn:hover {
+    transform: rotate(-180deg) translateY(-2px);
+    transition: all 0.6s ease;
+}
+
+.glow-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 0;
+}
