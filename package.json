@@ -2,6 +2,9 @@
   "name": "discord-moderation-bot",
   "version": "1.0.0",
   "description": "A powerful Discord moderation bot with auto-mod, logging, and slash commands",
+  "engines": {
+    "node": ">=16.9.0"
+  },
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
