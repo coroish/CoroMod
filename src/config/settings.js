@@ -24,13 +24,34 @@ module.exports = {
         },
         badWords: {
             enabled: true,
-            words: ['spam', 'scam'], // Add more as needed
+            words: ['spam', 'scam', 'nigger', 'faggot', 'retard'], // Add more as needed
             action: 'delete' // 'delete', 'warn', 'timeout'
         },
         antiLinks: {
             enabled: false,
-            whitelistedDomains: ['discord.gg', 'youtube.com', 'twitch.tv'],
+            whitelistedDomains: ['discord.gg', 'discord.com', 'youtube.com', 'youtu.be', 'twitch.tv', 'twitter.com', 'x.com', 'imgur.com', 'tenor.com', 'giphy.com'],
             action: 'delete'
+        },
+        antiInvites: {
+            enabled: true,
+            action: 'delete'
+        },
+        antiCaps: {
+            enabled: true,
+            threshold: 70, // percentage of caps to trigger
+            minLength: 10 // minimum message length to check
+        },
+        massMention: {
+            enabled: true,
+            limit: 5 // max mentions per message
+        },
+        emojiSpam: {
+            enabled: true,
+            limit: 10 // max emojis per message
+        },
+        antiDuplicate: {
+            enabled: true,
+            timeWindow: 30000 // 30 seconds
         },
         antiRaid: {
             enabled: true,

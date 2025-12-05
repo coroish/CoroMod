@@ -118,6 +118,55 @@ function getModActions(guildId, targetUserId = null, limit = 10) {
         .slice(0, limit);
 }
 
+// Report functions
+function addReport(guildId, targetId, reporterId, reason, evidenceUrl = null) {
+    if (!db.reports) db.reports = [];
+
+    const report = {
+        id: Date.now().toString(36).toUpperCase(),
+        guild_id: guildId,
+        target_id: targetId,
+        reporter_id: reporterId,
+        reason: reason,
+        evidence_url: evidenceUrl,
+        status: 'pending',
+        resolved_by: null,
+        resolution: null,
+        created_at: new Date().toISOString(),
+        resolved_at: null
+    };
+    db.reports.push(report);
+    saveDatabase(db);
+    return report;
+}
+
+function getReports(guildId, status = null) {
+    if (!db.reports) db.reports = [];
+
+    let reports = db.reports.filter(r => r.guild_id === guildId);
+
+    if (status) {
+        reports = reports.filter(r => r.status === status);
+    }
+
+    return reports.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+}
+
+function updateReportStatus(reportId, status, resolution = null, resolvedBy = null) {
+    if (!db.reports) return null;
+
+    const report = db.reports.find(r => r.id === reportId);
+    if (!report) return null;
+
+    report.status = status;
+    report.resolution = resolution;
+    report.resolved_by = resolvedBy;
+    report.resolved_at = new Date().toISOString();
+
+    saveDatabase(db);
+    return report;
+}
+
 module.exports = {
     addWarning,
     getWarnings,
@@ -126,5 +175,9 @@ module.exports = {
     getGuildSettings,
     setGuildSettings,
     logModAction,
-    getModActions
+    getModActions,
+    addReport,
+    getReports,
+    updateReportStatus
 };
+
