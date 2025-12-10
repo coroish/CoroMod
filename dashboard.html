@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - CoroMod</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="Logo">
+                <span>CoroMod</span>
+            </a>
+
+            <div class="nav-actions">
+                <div class="user-profile">
+                    <img id="dash-user-avatar" src="" alt="Avatar">
+                    <span id="dash-user-name">Loading...</span>
+                    <a href="#" id="dash-logout-btn"><i class="fas fa-sign-out-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Select a Server</h1>
+                <p>Choose a server to configure CoroMod. Only servers where you have 'Manage Server' permissions are
+                    shown.</p>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loading-servers" class="loading-state">
+                <div class="spinner"></div>
+                <p>Loading your servers...</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="error-container" class="error-state hidden">
+                <i class="fas fa-exclamation-circle"></i>
+                <p id="error-message">Something went wrong.</p>
+                <a href="index.html" class="btn btn-secondary">Go Back</a>
+            </div>
+
+            <!-- Server Grid -->
+            <div id="server-grid" class="server-grid hidden">
+                <!-- Server cards will be injected here by JS -->
+            </div>
+        </div>
+    </main>
+
+    <script src="dashboard.js"></script>
+</body>
+
+</html>

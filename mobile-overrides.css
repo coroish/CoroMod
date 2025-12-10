@@ -1,0 +1,26 @@
+@media (max-width: 768px) {
+
+    /* Improve touch targets */
+    .config-select,
+    .input-field,
+    select,
+    input[type="text"],
+    textarea {
+        font-size: 16px !important;
+        /* Prevents iOS zoom */
+        min-height: 48px;
+        /* Easier to tap */
+        padding: 12px;
+    }
+
+    /* Fix dropdown arrow overlapping text */
+    .config-select {
+        background-position: right 15px center;
+        padding-right: 40px;
+    }
+
+    /* Stack form groups for better vertical flow */
+    .form-group {
+        margin-bottom: 20px;
+    }
+}

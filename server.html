@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Dashboard - CoroMod</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="custom-dropdown.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="Logo">
+                <span>CoroMod</span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="dashboard.html"><i class="fas fa-arrow-left"></i> All Servers</a>
+            </nav>
+
+            <div class="nav-actions">
+                <div class="user-profile">
+                    <img id="server-user-avatar" src="" alt="Avatar">
+                    <span id="server-user-name">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="server-dashboard">
+        <div class="container">
+            <!-- Server Header -->
+            <div class="server-dash-header">
+                <div class="server-info">
+                    <img id="server-icon" src="" alt="Server Icon" class="server-dash-icon">
+                    <div>
+                        <h1 id="server-name">Loading...</h1>
+                        <p class="server-id">Server ID: <span id="server-id-display">---</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Navigation Tabs -->
+            <div class="dash-tabs">
+                <button class="tab-btn active" data-tab="overview">
+                    <i class="fas fa-home"></i> Overview
+                </button>
+                <button class="tab-btn" data-tab="moderation">
+                    <i class="fas fa-shield-alt"></i> Moderation
+                </button>
+                <button class="tab-btn" data-tab="logging">
+                    <i class="fas fa-clipboard-list"></i> Logging
+                </button>
+                <button class="tab-btn" data-tab="automod">
+                    <i class="fas fa-robot"></i> Auto-Mod
+                </button>
+                <button class="tab-btn" data-tab="commands">
+                    <i class="fas fa-terminal"></i> Commands
+                </button>
+                <button class="tab-btn" data-tab="embeds">
+                    <i class="fas fa-paintbrush"></i> Embed Builder
+                </button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- Overview Tab -->
+                <div class="tab-pane active" id="overview">
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-gavel"></i></div>
+                            <div class="stat-data">
+                                <span class="stat-number" id="stat-bans">0</span>
+                                <span class="stat-label">Total Bans</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-shoe-prints"></i></div>
+                            <div class="stat-data">
+                                <span class="stat-number" id="stat-kicks">0</span>
+                                <span class="stat-label">Total Kicks</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-trash"></i></div>
+                            <div class="stat-data">
+                                <span class="stat-number" id="stat-deleted">0</span>
+                                <span class="stat-label">Messages Deleted</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div class="stat-data">
+                                <span class="stat-number" id="stat-warnings">0</span>
+                                <span class="stat-label">Warnings Issued</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="config-section">
+                        <h3><i class="fas fa-history"></i> Recent Activity</h3>
+                        <div class="activity-log-container">
+                            <table class="activity-table">
+                                <thead>
+                                    <tr>
+                                        <th>Action</th>
+                                        <th>User</th>
+                                        <th>Reason</th>
+                                        <th>Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="activity-log-body">
+                                    <tr>
+                                        <td colspan="4" class="empty-log">No recent activity found.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Moderation Tab -->
+                <div class="tab-pane" id="moderation">
+                    <div class="config-section">
+                        <h3>Moderation Settings</h3>
+                        <div class="config-item">
+                            <div class="config-info">
+                                <span class="config-title">Mod Role</span>
+                                <span class="config-desc">Users with this role can use moderation commands</span>
+                            </div>
+                            <select class="config-select" id="mod-role">
+                                <option value="">Select a role...</option>
+                                <option value="placeholder">@Moderator</option>
+                            </select>
+                        </div>
+                        <div class="config-item">
+                            <div class="config-info">
+                                <span class="config-title">Mute Role</span>
+                                <span class="config-desc">Role applied when a user is muted</span>
+                            </div>
+                            <select class="config-select" id="mute-role">
+                                <option value="">Select a role...</option>
+                                <option value="placeholder">@Muted</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Logging Tab -->
+                <div class="tab-pane" id="logging">
+                    <div class="config-section">
+                        <h3>Logging Channels</h3>
+                        <div class="config-item">
+                            <div class="config-info">
+                                <span class="config-title">Mod Log Channel</span>
+                                <span class="config-desc">Where moderation actions are logged</span>
+                            </div>
+                            <select class="config-select" id="mod-log">
+                                <option value="">Select a channel...</option>
+                                <option value="placeholder">#mod-logs</option>
+                            </select>
+                        </div>
+                        <div class="config-item">
+                            <div class="config-info">
+                                <span class="config-title">Message Log Channel</span>
+                                <span class="config-desc">Where deleted/edited messages are logged</span>
+                            </div>
+                            <select class="config-select" id="message-log">
+                                <option value="">Select a channel...</option>
+                                <option value="placeholder">#message-logs</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auto-Mod Tab -->
+                <div class="tab-pane" id="automod">
+                    <div class="config-section">
+                        <h3>Auto-Moderation Rules</h3>
+
+                        <!-- Toggles -->
+                        <div class="config-item toggle-item">
+                            <div class="config-info">
+                                <span class="config-title">Anti-Spam</span>
+                                <span class="config-desc">Automatically detect and remove spam messages</span>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" id="anti-spam">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="config-item toggle-item">
+                            <div class="config-info">
+                                <span class="config-title">Bad Words Filter</span>
+                                <span class="config-desc">Filter out inappropriate language</span>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" id="bad-words">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="config-item toggle-item">
+                            <div class="config-info">
+                                <span class="config-title">Link Protection</span>
+                                <span class="config-desc">Remove unauthorized links</span>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" id="link-protection">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        <!-- Specific Lists -->
+                        <div class="config-item vertical">
+                            <div class="config-info">
+                                <span class="config-title">Blocked Words</span>
+                                <span class="config-desc">Separate words with commas (e.g., bad, word, test)</span>
+                            </div>
+                            <textarea class="config-textarea" id="blocked-words-list"
+                                placeholder="Enter words to block..."></textarea>
+                        </div>
+
+                        <div class="config-item vertical">
+                            <div class="config-info">
+                                <span class="config-title">Allowed Domains</span>
+                                <span class="config-desc">Domains allowed when Link Protection is on (e.g., youtube.com,
+                                    google.com)</span>
+                            </div>
+                            <textarea class="config-textarea" id="allowed-links-list"
+                                placeholder="Enter allowed domains..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Commands Tab -->
+                <div class="tab-pane" id="commands">
+                    <div class="config-section">
+                        <h3>Command Management</h3>
+                        <p class="section-desc">Enable, disable, or custom alias commands.</p>
+
+                        <div class="command-list" id="command-list">
+                            <!-- JS will populate this -->
+                            <div class="loading-spinner">Loading commands...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Embed Builder Tab -->
+                <div class="tab-pane" id="embeds">
+                    <div class="embed-builder-layout">
+                        <!-- Builder Form -->
+                        <div class="config-section builder-form">
+                            <h3><i class="fas fa-paintbrush"></i> Create Embed</h3>
+                            <p class="section-desc">Design and send custom embeds to your channels.</p>
+
+                            <div class="form-grid">
+                                <div class="form-group full-width">
+                                    <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
+                                        <label style="margin:0;">Target Channel</label>
+                                        <button type="button" class="btn btn-secondary" id="refresh-channels-btn" style="padding:6px 10px; font-size:12px;">
+                                            <i class="fas fa-rotate-right"></i> Refresh
+                                        </button>
+                                    </div>
+                                    <div class="custom-select-wrapper" id="embed-channel-wrapper">
+                                        <div class="custom-select-trigger" id="embed-channel-trigger">
+                                            <span id="selected-channel-name"># Select Channel</span>
+                                            <i class="fas fa-chevron-down"></i>
+                                        </div>
+                                        <div class="custom-select-options" id="embed-channel-options">
+                                            <!-- Options injected via JS -->
+                                        </div>
+                                        <input type="hidden" id="embed-channel" value="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label>Title</label>
+                                    <input type="text" class="input-field" id="embed-title" placeholder="Embed Title">
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label>Description</label>
+                                    <textarea class="input-field" id="embed-desc" rows="5"
+                                        placeholder="Embed Description"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Color</label>
+                                    <div class="color-picker-wrapper">
+                                        <input type="color" class="input-color" id="embed-color" value="#5865F2">
+                                        <span class="color-value">#5865F2</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Image URL</label>
+                                    <input type="text" class="input-field" id="embed-image" placeholder="https://...">
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label>Footer Text</label>
+                                    <input type="text" class="input-field" id="embed-footer" placeholder="Footer text">
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary" id="send-embed-btn">
+                                <i class="fas fa-paper-plane"></i> Send Embed
+                            </button>
+                        </div>
+
+                        <!-- Preview -->
+                        <div class="preview-section">
+                            <h3>Preview</h3>
+                            <div class="discord-message-preview">
+                                <div class="message-group">
+                                    <div class="avatar-container">
+                                        <img src="logo.jpg" class="message-avatar" alt="Bot Avatar">
+                                    </div>
+                                    <div class="message-content-wrapper">
+                                        <div class="message-header">
+                                            <span class="message-username">CoroMod</span>
+                                            <span class="bot-tag">BOT</span>
+                                            <span class="message-timestamp">Today at 12:00 PM</span>
+                                        </div>
+
+                                        <!-- Actual Embed -->
+                                        <div class="discord-embed-preview" id="embed-preview">
+                                            <div class="embed-side-color" id="preview-color"></div>
+                                            <div class="embed-content">
+                                                <div class="embed-title" id="preview-title">Embed Title</div>
+                                                <div class="embed-desc" id="preview-desc">Embed description will appear
+                                                    here...</div>
+                                                <img src="" class="embed-image hidden" id="preview-image">
+                                                <div class="embed-footer" id="preview-footer"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Save Bar -->
+            <div class="save-bar">
+                <div class="save-bar-content">
+                    <span id="save-status" class="save-status" style="display: none;"></span>
+                    <p class="save-note">Changes are saved automatically when you toggle settings.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="server.js"></script>
+</body>
+
+</html>

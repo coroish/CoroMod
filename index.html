@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoroMod - Professional Discord Moderation</title>
+    <meta name="description" content="Secure, fast, and reliable moderation for your Discord server.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container navbar">
+            <a href="#" class="logo">
+                <img src="logo.jpg" alt="Logo">
+                <span>CoroMod</span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#commands">Commands</a>
+                <a href="#status">Status</a>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Logged Out State -->
+                <div id="logged-out-view">
+                    <a href="#" class="btn btn-login" id="discord-login-btn">
+                        <i class="fab fa-discord"></i> Login
+                    </a>
+                </div>
+
+                <!-- Logged In State (Hidden by default) -->
+                <div id="logged-in-view" class="hidden">
+                    <div class="user-profile">
+                        <img id="user-avatar" src="" alt="Avatar">
+                        <span id="user-name">Username</span>
+                        <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i></a>
+                    </div>
+                </div>
+
+                <a href="https://discord.com/oauth2/authorize?client_id=1446188622771519722" class="btn btn-primary"
+                    target="_blank">
+                    Add to Server
+                </a>
+            </div>
+
+            <button class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <div class="badge">New V2.0 Available</div>
+                    <h1>Moderation <br> <span class="text-gradient">reimagined.</span></h1>
+                    <p>
+                        The all-in-one Discord bot that keeps your community safe, clean, and engaged.
+                        Trusted by over 10,000 servers.
+                    </p>
+                    <div class="button-group">
+                        <a href="https://discord.com/oauth2/authorize?client_id=1446188622771519722"
+                            class="btn btn-primary btn-lg" target="_blank">
+                            <i class="fab fa-discord"></i> Invite to Server
+                        </a>
+                        <a href="#features" class="btn btn-secondary btn-lg">View Features</a>
+                    </div>
+                </div>
+                <div class="hero-card">
+                    <div class="card-glass">
+                        <div class="card-header">
+                            <div class="status-dot"></div>
+                            <span>Moderation Log</span>
+                        </div>
+                        <div class="log-entries">
+                            <div class="log-entry">
+                                <span class="time">10:42 AM</span>
+                                <span class="action highlight">Auto-Mod</span>
+                                <span>filtered 2 spam messages</span>
+                            </div>
+                            <div class="log-entry">
+                                <span class="time">10:45 AM</span>
+                                <span class="action">Admin</span>
+                                <span>banned User#1234</span>
+                            </div>
+                            <div class="log-entry">
+                                <span class="time">11:00 AM</span>
+                                <span class="action highlight">System</span>
+                                <span>Updated server settings</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Everything you need</h2>
+                    <p>Powerful features packed into a simple interface.</p>
+                </div>
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <div class="icon-wrapper"><i class="fas fa-shield-alt"></i></div>
+                        <h3>Auto Moderation</h3>
+                        <p>Intelligent filters aimed at keeping your chat clean from spam and toxicity.</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="icon-wrapper"><i class="fas fa-bolt"></i></div>
+                        <h3>Instant Responses</h3>
+                        <p>Custom commands and triggers that execute actions in milliseconds.</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="icon-wrapper"><i class="fas fa-chart-pie"></i></div>
+                        <h3>Server Analytics</h3>
+                        <p>Track growth and engagement with beautiful, easy-to-read charts.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="commands" class="commands">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Popular Commands</h2>
+                </div>
+                <div class="command-table">
+                    <div class="row header">
+                        <div class="col">Command</div>
+                        <div class="col">Description</div>
+                        <div class="col">Usage</div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><span class="cmd-badge">/ban</span></div>
+                        <div class="col">Ban a member from the server</div>
+                        <div class="col"><code>/ban @user [reason]</code></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><span class="cmd-badge">/mute</span></div>
+                        <div class="col">Timeout a member</div>
+                        <div class="col"><code>/mute @user [time]</code></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><span class="cmd-badge">/clear</span></div>
+                        <div class="col">Delete bulk messages</div>
+                        <div class="col"><code>/clear [amount]</code></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <div class="cta-box">
+                    <h2>Ready to upgrade your server?</h2>
+                    <p>Get started in less than 2 minutes.</p>
+                    <a href="https://discord.com/oauth2/authorize?client_id=1446188622771519722"
+                        class="btn btn-primary btn-lg" target="_blank">Add CoroMod Now</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-flex">
+            <div class="footer-brand">
+                <h4>CoroMod</h4>
+                <p>Making communities safer.</p>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2025 CoroMod. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+/* ==========================================
+   CUSTOM DROPDOWN (New)
+   ========================================== */
+.custom-select-wrapper {
+    position: relative;
+    user-select: none;
+    width: 100%;
+}
+
+.custom-select-trigger {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.custom-select-trigger:hover {
+    border-color: var(--text-secondary);
+}
+
+.custom-select-trigger.active {
+    border-color: var(--accent);
+    color: white;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.custom-select-options {
+    position: absolute;
+    display: none;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background: var(--bg-secondary);
+    z-index: 10;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.custom-select-options.open {
+    display: block;
+}
+
+.custom-option {
+    padding: 10px 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.custom-option:hover {
+    background: var(--accent);
+    color: white;
+}
+
+.custom-option.selected {
+    color: white;
+    background: rgba(88, 101, 242, 0.1);
+}
+
+.hash {
+    color: var(--text-secondary);
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 1.1rem;
+}
+
+.custom-option:hover .hash {
+    color: rgba(255, 255, 255, 0.6);
+}
